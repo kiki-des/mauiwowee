@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Verdana, Geneva, sans-serif;
+            background: linear-gradient(to bottom, #ffffff 0%, #e0e0ff 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .popup {
+            background: #d4d0c8;
+            border: 2px outset #ffffff;
+            box-shadow: 3px 3px 0px rgba(0,0,0,0.4);
+            width: 400px;
+            position:absolute;
+            animation: floatAcross 20s ease-in-out infinite alternate;
+        }
+        
+        .title-bar {
+            background: linear-gradient(to right, #0054e3, #4393e8);
+            padding: 3px 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .title-bar-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .close-btn {
+            background: #d4d0c8;
+            border: 1px outset #ffffff;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: black;
+            font-weight: bold;
+            cursor: not-allowed;
+        }
+        
+        .popup-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .popup-message {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .popup-icon {
+            font-size: 40px;
+        }
+        
+        .popup-text {
+            font-size: 14px;
+            color: #000;
+        }
+        
+        .popup-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .button {
+            background: #d4d0c8;
+            border: 2px outset #ffffff;
+            padding: 6px 20px;
+            font-family: Verdana, Geneva, sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+            min-width: 80px;
+        }
+        
+        .button:active {
+            border-style: inset;
+        }
+        
+        .button:hover {
+            background: #e0ddd6;
+        }
+
+        @keyframes floatAcross {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(100% - 220px); /* adjust for popup width */
+  }
+}
+    </style>
+</head>
+<body>
+    <div class="popup" id="popup">
+        <div class="title-bar">
+            <div class="title-bar-text">
+                <span>💭</span>
+                <span>Message!</span>
+            </div>
+            <div class="close-btn">×</div>
+        </div>
+        <div class="popup-content">
+            <div class="popup-message">
+                <div class="popup-icon">💭</div>
+                <div class="popup-text" id="message">Thinking about you...</div>
+            </div>
+            <div class="popup-buttons">
+                <button class="button" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cancelBtn = document.getElementById('cancelBtn');
+        const message = document.getElementById('message');
+        let clicked = false;
+        
+        cancelBtn.addEventListener('click', function() {
+            if (!clicked) {
+                message.textContent = 'Still thinking about you haha';
+                clicked = true;
+            }
+        });
+    </script>
+</body>
+</html>
